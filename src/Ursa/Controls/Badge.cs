@@ -50,6 +50,22 @@ public class Badge: HeaderedContentControl
         set => SetValue(OverflowCountProperty, value);
     }
 
+    public static readonly StyledProperty<int> HeaderFontSizeProperty = AvaloniaProperty.Register<Badge, int>(
+        nameof(HeaderFontSize));
+    public int HeaderFontSize
+    {
+        get => GetValue(HeaderFontSizeProperty);
+        set => SetValue(HeaderFontSizeProperty, value);
+    }
+
+    public static readonly StyledProperty<IBrush?> HeaderForegroundProperty = AvaloniaProperty.Register<Badge, IBrush?>(
+        nameof(HeaderForeground));
+    public IBrush? HeaderForeground
+    {
+        get => GetValue(HeaderForegroundProperty);
+        set => SetValue(HeaderForegroundProperty, value);
+    }
+
     static Badge()
     {
         HeaderProperty.Changed.AddClassHandler<Badge>((badge, args) => badge.UpdateBadgePosition());

@@ -20,6 +20,8 @@
         <Setter Property="u:Badge.UseLayoutRounding" Value="False" />
         <Setter Property="u:Badge.BorderBrush" Value="{DynamicResource BadgeBorderBrush}" />
         <Setter Property="u:Badge.CornerPosition" Value="{DynamicResource BadgeCornerPosition}" />
+        <Setter Property="u:Badge.HeaderFontSize" Value="{DynamicResource BadgeHeaderFontSize}" />
+        <Setter Property="u:Badge.HeaderForeground" Value="{DynamicResource BadgeHeaderForeground}" />
         <Setter Property="u:Badge.Template">
             <ControlTemplate TargetType="{x:Type u:Badge}">
                 <Grid
@@ -55,8 +57,8 @@
                             VerticalAlignment="Center"
                             Focusable="False"
                             IsTabStop="False"
-                            TextElement.FontSize="{TemplateBinding FontSize}"
-                            TextElement.Foreground="{TemplateBinding Foreground}">
+                            TextElement.FontSize="{TemplateBinding HeaderFontSize}"
+                            TextElement.Foreground="{TemplateBinding HeaderForeground}">
                             <ContentPresenter.Content>
                                 <MultiBinding Converter="{StaticResource BadgeContentConverter}">
                                     <Binding Path="Header" RelativeSource="{RelativeSource TemplatedParent}" />
