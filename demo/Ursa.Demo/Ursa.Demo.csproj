@@ -25,7 +25,7 @@
         <PackageReference Include="Semi.Avalonia" Version="$(SemiAvaloniaVersion)" />
     </ItemGroup>
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <DefineConstants>$(DefineConstants);ENABLE_XAML_HOT_RELOAD</DefineConstants>
+        <DefineConstants>$(DefineConstants);ENABLE_XAML_HOT_RELOAD1</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
