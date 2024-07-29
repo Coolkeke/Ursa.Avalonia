@@ -191,7 +191,7 @@ public abstract class NumericUpDown : TemplatedControl/* , Control */ /*, IClear
         protected set => SetValue(IsEditingValidProperty, value);
     }
 
-    public static readonly StyledProperty<bool> IsEditingVisiableProperty = 
+    public static readonly StyledProperty<bool> IsEditingVisiableProperty =
         AvaloniaProperty.Register<NumericUpDown, bool>(nameof(IsEditingVisiable), false);
 
     /// <summary>
@@ -589,12 +589,21 @@ public abstract class NumericUpDownBase<T> : NumericUpDown where T : struct, ICo
     }
 
     public static readonly StyledProperty<T?> ValueProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, T?>(
-        nameof(Value), defaultBindingMode: BindingMode.TwoWay);
+        nameof(Value), defaultBindingMode: BindingMode.TwoWay, enableDataValidation: true);
 
     public T? Value
     {
         get => GetValue(ValueProperty);
         set => SetValue(ValueProperty, value);
+    }
+
+    protected override void UpdateDataValidation(AvaloniaProperty property, BindingValueType state, Exception? error)
+    {
+        if (property == ValueProperty)
+        {
+            DataValidationErrors.SetError(this, error);
+        }
+
     }
 
     public static readonly StyledProperty<T> StepProperty = AvaloniaProperty.Register<NumericUpDownBase<T>, T>(
